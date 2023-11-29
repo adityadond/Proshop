@@ -1,10 +1,28 @@
 import { Row, Col } from "react-bootstrap";
-
-import products from "../products.js";
-import Product from "../components/Product.jsx";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Product from "../components/Product";
 
 function HomeScreen() {
-  console.log(products);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("/api/products");
+        const productss = response.data;
+        console.log(productss);
+        setProducts(productss);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        // Handle error: setProducts([]) or display an error message
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  console.log(products, "products");
   return (
     <>
       <h1>Latest Products</h1>
