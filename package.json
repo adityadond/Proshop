@@ -14,6 +14,7 @@
     "ansi-styles": "^4.3.0",
     "anymatch": "^3.1.3",
     "balanced-match": "^1.0.2",
+    "bcryptjs": "^2.4.3",
     "binary-extensions": "^2.2.0",
     "brace-expansion": "^1.1.11",
     "braces": "^3.0.2",
@@ -72,7 +73,9 @@
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
     "client": "npm run dev --prefix frontend/pro-shop",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node backend/seeder",
+    "data:destroy": "node backend/seeder -d"
   },
   "keywords": [],
   "author": "",
